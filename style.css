@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&display=swap');
+
+body {
+   background-color: rgb(0, 109, 9);
+   font-family: "Raleway", sans-serif;
+   color: white;
+}
+
+h1, h3 {
+   margin: 0;
+}
+
+.navbar {
+   background-color: black;
+   padding: 15px;
+   text-align: center;
+   font-weight: 600;
+   font-size: 14px;
+   margin-bottom: 10px;
+   letter-spacing: 1px;
+}
+
+.buttons {
+   text-align: center;
+   margin-bottom: 10px;
+}
+
+.btn {
+  border: 0;
+  padding: 8px 20px;
+  margin-left: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.btn:hover {
+   box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.596);
+}
+
+.btnRojo {
+   background-color: rgb(245, 31, 23);
+}
+
+.btnRojoDesactivado {
+   background-color: rgb(177, 22, 17);
+   cursor: auto;
+   color: gray;
+}
+
+.btnRojoDesactivado:hover {
+   box-shadow: none;
+}
+
+.btnRojo:hover {
+   background-color: rgb(177, 22, 17);
+}
+
+.btnAzul {
+   background-color: rgb(11, 96, 255);
+}
+
+.btnAzul:hover {
+   background-color: rgb(7, 76, 204);
+}
+
+.table {
+   margin-left: 60px;
+}
+
+.jugador, .computadora {
+   margin-bottom: 20px;
+   min-height: 308px;
+}
+
+.jugador h3, .computadora h3 {
+   font-size: 30px;
+   font-weight: 300;
+   margin-bottom: 10px;
+}
+
+.jugador img, .computadora img {
+    width: 170px;
+}
+
