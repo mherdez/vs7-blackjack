@@ -68,7 +68,7 @@ h1, h3 {
 .jugador img, .computadora img {
     width: 170px;
     position: relative;
-    left: 135px;
-    margin-left: -135px;
+    left: 130px;
+    margin-left: -130px;
 }
 
