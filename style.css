@@ -34,22 +34,8 @@ h1, h3 {
   color: white;
 }
 
-.btn:hover {
-   box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.596);
-}
-
 .btnRojo {
    background-color: rgb(245, 31, 23);
-}
-
-.btnRojoDesactivado {
-   background-color: rgb(177, 22, 17);
-   cursor: auto;
-   color: gray;
-}
-
-.btnRojoDesactivado:hover {
-   box-shadow: none;
 }
 
 .btnRojo:hover {
@@ -82,7 +68,7 @@ h1, h3 {
 .jugador img, .computadora img {
     width: 170px;
     position: relative;
-    left: 125px;
-    margin-left: -125px;
+    left: 135px;
+    margin-left: -135px;
 }
 

@@ -1,33 +1,48 @@
 
- // REFERENCIAS HTML (DOM)
- const btnNuevoJuego = document.querySelector('#nuevoJuego');
- const btnPedirCarta = document.querySelector('#pedirCarta');
- const btnDetener    = document.querySelector('#detener');
- 
- const cartasJugador     = document.querySelector('.cartasJugador');
- const cartasComputadora = document.querySelector('.cartasComputadora');
- const puntuacionesHTML  = document.querySelectorAll('small');
+// REFERENCIAS HTML
+const btnNuevoJuego     = document.querySelector('#nuevoJuego');
+const btnPedirCarta     = document.querySelector('#pedirCarta');
+const btnDetener        = document.querySelector('#detener');
 
-/*
-   - Los números son del 2 al 10
-   - Las figuras son Jack (J), Queen (Q), King (K), As (A)
-   - Palo son Trebol (C), Diamante (D), Corazon (H), Picas (S)
-*/
+const cartasJugador     = document.querySelector('.cartasJugador');
+const cartasComputadora = document.querySelector('.cartasComputadora');
 
 // VARIABLES 
+const palo       = ['H','D','S','C'];
+const especiales = ['A','J','Q','K'];
+let mazo         = [];
 
-let mazo = [];
-const especiales = ['J','Q','K','A'];
-const palo       = ['C','D','H','S'];
+// EVENTOS CLICK DE LOS BOTONES
+btnNuevoJuego.addEventListener('click', () => {
+   cartasJugador.innerHTML     = '';
+   cartasComputadora.innerHTML = '';
+})
 
-let   puntuacionJugador = 0;
+btnPedirCarta.addEventListener('click', () => {
+   pintarCarta(cartasJugador);
+})
+
+btnDetener.addEventListener('click', () => {
+   pintarCarta(cartasComputadora);
+})
+
 
 // FUNCIONES
+const pintarCarta = (turno) => {
+   if( mazo.length === 0) {
+      console.log('ya no hay cartas')
+      return
+   }
+   const figura = mazo.shift();
+   const carta = document.createElement('img');
+   carta.src   = `./assets/cartas/${ figura }.png`;
+   turno.append(carta);
+}
+
 const crearMazo = () => {
-   mazo = [];
    for(let n = 2; n <= 10; n++) {
       for(let p of palo) {
-         mazo.push(n+p)
+         mazo.push(n+p);
       }
    }
    for(let e of especiales) {
@@ -36,47 +51,7 @@ const crearMazo = () => {
       }
    }
    mazo = _.shuffle(mazo)
-   // console.log(mazo)
+   console.log(mazo)
 }
 
-const pedirCarta = () => {
-   return mazo.shift()
-}
-
-const valorCarta = (carta) => {
-   let valor = carta.substring(0,carta.length - 1)
-   return (isNaN(valor)) ? (valor === 'A') ? valor = 11 
-                                           : valor = 10
-                         : valor *= 1;
-}
-
-
-// EVENTOS CLICK DE LOS BOTONES
-
-btnNuevoJuego.addEventListener('click', () => {
-   cartasJugador.innerHTML = '';
-   puntuacionJugador = 0;
-   puntuacionesHTML[0].textContent = puntuacionJugador;
-
-   cartasComputadora.innerHTML = '';
-   
-   console.clear();
-   mazo = []
-   crearMazo();
-})
-
-btnPedirCarta.addEventListener('click', () => {
-   let nuevaCartaJugador = pedirCarta();
-   cartasJugador.innerHTML += `<img src="./assets/cartas/${nuevaCartaJugador}.png"></img>`;
-   puntuacionJugador += valorCarta(nuevaCartaJugador);
-   puntuacionesHTML[0].textContent = puntuacionJugador;
-})
-
-
-btnDetener.addEventListener('click', () => {
-   cartasComputadora.innerHTML += '<img src="./assets/cartas/QS.png"></img>'
-})
-
-// FUNCIONES INICIALES
 crearMazo();
-
