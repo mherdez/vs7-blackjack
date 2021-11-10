@@ -131,7 +131,7 @@ const turnoComputadora = () => {
          }
       } while( totalPuntosComputadora <= 21 )
       
-      if(totalPuntosJugador > totalPuntosComputadora || totalPuntosComputadora > 21) {
+      if((totalPuntosJugador > totalPuntosComputadora || totalPuntosComputadora > 21) && totalPuntosJugador <= 21) {
          console.log('el jugador gana') 
       }
 
