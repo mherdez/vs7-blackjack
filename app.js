@@ -33,12 +33,13 @@ btnNuevoJuego.addEventListener('click', () => {
 })
 
 btnPedirCarta.addEventListener('click', () => {
-   // const cartaNueva = pintarCarta(cartasJugador);
-   // const valor = valorCarta(cartaNueva);
-   // totalPuntosJugador += valor;
    totalPuntosJugador += valorCarta(pintarCarta(cartasJugador));
    pintarPuntuacion(puntosJugador, totalPuntosJugador);
-   verificarPuntuacion( totalPuntosJugador );
+   
+   if(totalPuntosJugador > 21) {
+      apagarBotones();
+      turnoComputadora();
+   }
 })
 
 
@@ -48,7 +49,7 @@ btnDetener.addEventListener('click', () => {
    // totalPuntosComputadora += valor;
    // pintarPuntuacion(puntosComputadora, totalPuntosComputadora);
    apagarBotones();
-   console.log('Es turno de la computadora')
+   turnoComputadora();
 })
 
 
@@ -100,14 +101,6 @@ const pintarPuntuacion = (turno, puntos) => {
    turno.textContent = puntos;
 }
 
-const verificarPuntuacion = (puntos) => {
-   if(puntos > 21) {
-      console.log('Perdiste');
-      console.log('Turno de la computadora')
-      apagarBotones();
-   }
-}
-
 const apagarBotones = () => {
    btnPedirCarta.classList.remove('btnAzul');
    btnPedirCarta.classList.add('btnAzulDesactivado');
@@ -124,6 +117,25 @@ const prenderBotones = () => {
    btnDetener.classList.add('btnAzul');
    btnPedirCarta.removeAttribute('disabled');
    btnDetener.removeAttribute('disabled');
+}
+
+const turnoComputadora = () => {
+   
+      do {
+         totalPuntosComputadora += valorCarta(pintarCarta(cartasComputadora));
+         pintarPuntuacion(puntosComputadora, totalPuntosComputadora)
+         if( (totalPuntosComputadora >= totalPuntosJugador && 
+             totalPuntosComputadora <= 21) || totalPuntosJugador > 21) {
+            console.log('la computadora gana')
+            break;
+         }
+      } while( totalPuntosComputadora <= 21 )
+      
+      if(totalPuntosJugador > totalPuntosComputadora || totalPuntosComputadora > 21) {
+         console.log('el jugador gana') 
+      }
+
+
 }
 
 // INICIO DE PROCESOS
